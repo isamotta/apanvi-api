@@ -7,9 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{05541B79-8FC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3CA69F73-1D41-4654-97D4-F691471CFCE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apanvi.Api", "src\Apanvi.Api\Apanvi.Api.csproj", "{3D0800D4-7E11-4873-B764-213E4BF7E529}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apanvi.Api", "src\Apanvi.Api\Apanvi.Api.csproj", "{3D0800D4-7E11-4873-B764-213E4BF7E529}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apanvi.Api.Tests", "test\Apanvi.Api.Tests\Apanvi.Api.Tests.csproj", "{1CD0A6B6-9DE0-49DB-B037-AA60DD14A3F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apanvi.Api.Tests", "test\Apanvi.Api.Tests\Apanvi.Api.Tests.csproj", "{1CD0A6B6-9DE0-49DB-B037-AA60DD14A3F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{9F20EA1E-1562-452A-BD4E-6E4E0B376AF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
