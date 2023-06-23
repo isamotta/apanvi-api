@@ -8,7 +8,7 @@ namespace Apanvi.Api.Controllers
     public class AnimalController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get([FromQuery] Species? species, Sizes? size, Genres? genre)
+        public IActionResult GetAnimals([FromQuery] Species? species = null, [FromQuery] Sizes? size = null, [FromQuery] Genres? genre = null)
         {
             var animals = new List<Animal>()
             {
