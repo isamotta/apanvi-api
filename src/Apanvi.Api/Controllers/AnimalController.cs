@@ -1,4 +1,5 @@
 ﻿using Apanvi.Api.Models;
+using Apanvi.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Apanvi.Api.Controllers
@@ -7,49 +8,17 @@ namespace Apanvi.Api.Controllers
     [Route("[controller]")]
     public class AnimalController : ControllerBase
     {
+        private readonly IAnimalRepository _animalRepository;
+
+        public AnimalController(IAnimalRepository animalRepository)
+        {
+            _animalRepository = animalRepository;
+        }
+
         [HttpGet]
         public IActionResult GetAnimals([FromQuery] Species? species = null, [FromQuery] Sizes? size = null, [FromQuery] Genres? genre = null)
         {
-            var animals = new List<Animal>()
-            {
-                new Animal
-                {
-                    Name = "jojo",
-                    Description = "description",
-                    Genre = Genres.Male,
-                    Size = Sizes.Small,
-                    Species = Species.Cat
-                },
-                new Animal
-                {
-                    Name = "kiki",
-                    Description = "description",
-                    Genre = Genres.Female,
-                    Size = Sizes.Medium,
-                    Species = Species.Dog 
-                },
-                new Animal
-                {
-                    Name = "budy",
-                    Description = "description",
-                    Genre = Genres.Female,
-                    Size = Sizes.Medium,
-                    Species = Species.Dog
-                }
-            };
-
-            if (species.HasValue)
-            {
-                animals = animals.Where(animal => animal.Species == species).ToList();
-            }
-            if (size.HasValue)
-            {
-                animals = animals.Where(animal => animal.Size == size).ToList();
-            }
-            if (genre.HasValue)
-            {
-                animals = animals.Where(animal => animal.Genre == genre).ToList();
-            }
+            var animals = _animalRepository.GetAll(species, size, genre);
 
             return Ok(animals);
         }
