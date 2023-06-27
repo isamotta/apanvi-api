@@ -72,6 +72,28 @@ namespace Apanvi.Api.Tests.Repositories
             animals.Should().BeEquivalentTo(animalsBySize);
         }
 
+        [Theory]
+        [InlineData(Species.Cat, Sizes.Small, Genres.Male)]
+        [InlineData(Species.Dog, Sizes.Medium, Genres.Female)]
+        public void GetAll_WhenUsingMultipleFilters_ThenReturnFilteredAnimals(Species species, Sizes size, Genres genre)
+        {
+            // Arrange 
+            var sut = new AnimalRepository();
+
+            // Act
+            var animals = sut.GetAll(species, size, genre);
+
+            // Assert 
+            var animalsByMultipleFilters = AllWithAllFilters(species, size, genre);
+            animals.Should().HaveCount(animalsByMultipleFilters.Count);
+            animals.Should().BeEquivalentTo(animalsByMultipleFilters);
+        }
+
+        private List<Animal> AllWithAllFilters(Species species, Sizes size, Genres genre)
+        {
+            return AllAnimals().Where(animal => animal.Species == species && animal.Size == size && animal.Genre == genre).ToList();
+        }
+
         private List<Animal> AllWithGenre(Genres genre)
         {
             return AllAnimals().Where(animal => animal.Genre == genre).ToList();
